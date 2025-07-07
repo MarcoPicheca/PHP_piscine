@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reproduce a webpage.</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+	p[data-value].html5{
+		position: absolute;
+		left: -20%;
+		transform: translate(-80%);
+	}
+  </style>
+</head>
+<body>
+
+  <ul>
+    <li>
+      <h2>Frontend</h2>
+
+      <p>HTML5<span style="margin-left: 60%; transform: translate(-70%);">80%</span></p>
+      <progress class="html5" value="80" max="100"></progress>
+
+      <p>CSS3<span style="margin-left: 44%; transform: translate(-70%);">60%</span></p>
+      <progress class="html5" value="60" max="100"></progress>
+
+      <p>jQuery<span style="margin-left: 30%; transform: translate(-70%);">50%</span></p>
+      <progress class="html5" value="50" max="100"></progress>
+    </li>
+
+    <li>
+      <h2>Backend</h2>
+
+      <p>Python<span style="margin-left: 55%; transform: translate(-70%);">75%</span></p>
+      <progress class="html5" value="75" max="100"></progress>
+
+      <p>PHP<span style="margin-left: 51%; transform: translate(-70%);">65%</span></p>
+      <progress class="html5" value="65" max="100"></progress>
+
+      <p>Node.js<span style="margin-left: 15%; transform: translate(-70%);">35%</span></p>
+      <progress class="html5" value="35" max="100"></progress>
+    </li>
+  </ul>
+
+</body>
+</html>
