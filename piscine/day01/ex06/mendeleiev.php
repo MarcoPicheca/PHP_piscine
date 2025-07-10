@@ -133,6 +133,4 @@ foreach($elem_name_attr as $element)
 
 fwrite($mendeleiev_html,"</table></body>\n</html>\n");
 fclose($mendeleiev_html);
-
-// TODO: CHIUDERE IL BODY E L'HTML
 ?>

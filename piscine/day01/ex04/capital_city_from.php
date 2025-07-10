@@ -21,16 +21,16 @@ function capital_city_from($name)
 	'NJ' => 'trenton',
 	'KS' => 'Topeka',
 	];
+
+	$name_tmp = "";
 	foreach($states as $state => $acronym)
 	{
-		if ($state === $name){
-			$name = $acronym; 
+		if ($state == $name){
+			$name_tmp = $acronym; 
 			break ;
 		}
-		else
-			$name = "Unknown";
 	}
-	if ($name === "Unknown")
+	if (empty($name_tmp))
 	{
 		echo "Unknown\n";
 		return ;
@@ -38,7 +38,7 @@ function capital_city_from($name)
 	$result = "";
 	foreach ($capitals as $acronym => $capital)
 	{
-		if ($name === $acronym)
+		if ($name_tmp == $acronym)
 		{
 			echo $capital . "\n";
 			return ;
@@ -53,8 +53,9 @@ function capital_city_from($name)
 	}
 }
 
-// echo capital_city_from('Oregon');
-// echo capital_city_from('Origan');
-// echo capital_city_from('');
+echo capital_city_from('Oregon');
+echo capital_city_from('Alabama');
+echo capital_city_from('New Jersey');
+echo capital_city_from('');
 
 ?>
