@@ -1,13 +1,5 @@
 <?php
 
-/**
- * - crea file mendeleiev.html
- * - ogni elemento e' una cella di una table html
- * - il titolo dovrebbe essere all'interno di un <h4>
- * - l'attributo dovrebbe essere all'interno di una lista
- * 
- */
-
 function trim_elem_attr($attribute)
 {
 	$result = [];
@@ -75,57 +67,71 @@ fwrite($mendeleiev_html, "<!DOCTYPE html>
 	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
 	<title>Document</title>
 	<style>
-		body {
-			background-color: black;
+		
+		.periodic-table td {
+		  width: 60px;
+		  height: 60px;
+		  text-align: center;
+		  vertical-align: middle;
+		  border: 1px solid #ccc;
 		}
-		td {
-			border-color: white;
+		
+		.periodic-table .empty {
+		  background-color: transparent;
+		  border: 1px solid transparent; /* mantiene la dimensione */
 		}
+		
 	</style>
 </head>
 <body>
-\n");
-
+\n
+<table class=\"periodic-table\">");
+$x = 0;
+$i = 0;
 foreach($elem_name_attr as $element)
 {
-	fwrite($mendeleiev_html, "<tr>\n");
-	$i = 0;
-	echo $i . "   pos " . $element['pos'] . " \n";
-	if ($i != $element['pos'])
+	if ($i == 0)
+		fwrite($mendeleiev_html, "<tr>\n");
+	while ($i < 17 && $i != $element['pos'])
 	{
-		fwrite($mendeleiev_html, "<td>\n");
-		fwrite($mendeleiev_html, "</td>\n");
+		fwrite($mendeleiev_html, 
+		"	<td class=\"empty\">
+			</td>");
 		$i++;
 	}
-	if ($element['pos'] === $i)
+	print_r($element);
+	echo "$i\n";
+	if ($element['pos'] == $i)
 	{
 		$name = $element['name'];
-		$position = $element['position'];
+		$position = $element['pos'];
 		$number = $element['number'];
 		$small = $element['small'];
 		$mol = $element['mol'];
 		$electron = $element['electron'];
 		fwrite($mendeleiev_html, 
-		"		<h4>$name</h4>
+		"	<td class=\"element\">
+				<h4>$name</h4>
 				<ul>
 					<li>No $number</li>
 					<li>$small</li>
-					<li> $mol </ li>
+					<li> $mol </li>
 					<li>$electron electron</li>
-				<ul>");
-		$i++;
+				</ul>
+				</td>");
 	}
+	$i++;
 	if ($i > 17)
 	{
 		$x++;
 		fwrite($mendeleiev_html,"</tr>\n");
 		$i = 0;
 	}
-	if (x == 7)
+	if ($x == 7)
 		break ;
 }
 
-fwrite($mendeleiev_html,"</body>\n</html>\n");
+fwrite($mendeleiev_html,"</table></body>\n</html>\n");
 fclose($mendeleiev_html);
 
 // TODO: CHIUDERE IL BODY E L'HTML
