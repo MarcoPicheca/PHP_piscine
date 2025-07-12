@@ -1,5 +1,6 @@
 <?php
 
+include "MyException.php";
 class Elem {
 	private $tag_name;
 	private $tag_content = "";
@@ -13,8 +14,7 @@ class Elem {
 	{
 		if (empty($element) || gettype($element) !== "string" || !in_array($element, self::$tags))
 		{
-			echo "Elemento incorretto\n";
-			die();
+			throw new MyException("Errore!");
 		}
 		$this->tag_name = $element;
 		if (!in_array($element, self::$selfClosingTags))
@@ -34,8 +34,8 @@ class Elem {
 	{
 		if (in_array($this->tag_name, self::$selfClosingTags))
 		{
-			echo "Errore: non puoi aggiungere contenuto a un tag autoconclusivo ({$this->tag_name})\n";
-			return;
+			echo "Errore!\n";
+			die();
 		}
 		$this->children[] = $object;
 	}

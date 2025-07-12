@@ -12,9 +12,14 @@ $div = new Elem('div', 'pooeoorpeorfpckp');
 $div->pushElement(new Elem('p', 'CAVALLO'));
 
 $body->pushElement($div);
+try {
+    $body->pushElement(new Elem('djhf'));
+}
+catch (MyException $ex){
+    echo $ex->getMyMessage() . "\n";
+}
 $elem->pushElement($body);
 echo $elem->getHTML();
-
 $engine = new TemplateEngine($elem);
 $engine->createFile("gastro");
 
