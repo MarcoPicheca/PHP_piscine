@@ -3,20 +3,36 @@
 include "MyException.php";
 class Elem {
 	private $tag_name;
+	private $tag_name_close;
 	private $tag_content = "";
 	private $_element;
+	private $_attributes;
 	private $children = [];
 
 	private static $selfClosingTags = ['meta', 'img', 'hr', 'br'];
-	private static $tags = ['meta', 'img', 'hr', 'br',  "html", "head", "body", "title", "h1", "h2", "h3", "h4", "h5", "h6", "p", "span", "div"];
+	private static $tags = ['meta', 'img', 'hr', 'br',  "html", "head", "body",
+							"title", "h1", "h2", "h3", "h4", "h5", "h6", "p",
+							"span", "div", "table", "tr", "th", "td", "ul", "ol", "li"];
 
-	public function __construct($element, $content = "")
+	public function __construct($element, $content = "", $attributes = "")
 	{
 		if (empty($element) || gettype($element) !== "string" || !in_array($element, self::$tags))
 		{
-			throw new MyException("Errore!");
+			throw new MyException();
 		}
+		if ($content !== "" && gettype($content) !== "string")
+			throw new MyException();
 		$this->tag_name = $element;
+		$this->tag_name_close = $element;
+		if (!empty($attributes))
+		{
+			$class_keys = array_keys($attributes);
+			$class_values = array_values($attributes);
+			for ($i = 0; $i < count($class_keys); $i++)
+			{
+				$this->tag_name .= " {$class_keys[$i]}=\"{$class_values[$i]}\" ";
+			}
+		}
 		if (!in_array($element, self::$selfClosingTags))
 			$this->tag_content = $content;
 		$this->updateElement();
@@ -27,7 +43,7 @@ class Elem {
 		if (in_array($this->tag_name, self::$selfClosingTags))
 			$this->_element = "<{$this->tag_name} />";
 		else
-			$this->_element = "<{$this->tag_name}>{$this->tag_content}</{$this->tag_name}>";
+			$this->_element = "<{$this->tag_name}>{$this->tag_content}</{$this->tag_name_close}>";
 	}
 
 	public function pushElement(Elem $object)
@@ -89,7 +105,7 @@ class Elem {
 		 */
 		foreach ($this->children as $child)
 			$output .= $child->render($indentLevel + 1) . "\n";
-		$output .= $indent . "</{$this->tag_name}>";
+		$output .= $indent . "</{$this->tag_name_close}>";
 
 		return $output;
 	}
