@@ -1,0 +1,15 @@
+{
+	"name": "marcopicheca/weather",
+	"description": "Mostra il meteo nella citta'",
+	"type": "library",
+	"require": {
+		"php": ">=5.5.0",
+		"tcdent/php-restclient": "0.1.7"
+	},
+	"minimum-stability": "stable",
+	"autoload": {
+		"psr-4": {
+			"marcopicheca\\Weather\\": "src/"		
+		}
+	}
+}

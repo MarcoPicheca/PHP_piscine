@@ -10,7 +10,7 @@ class Elem {
 	private $_element;
 	private $_attributes;
 	private $children = [];
-	private ?Elem  $parent = null;
+	private $parent;
 
 	private static $selfClosingTags = ['meta', 'img', 'hr', 'br'];
 
@@ -58,7 +58,7 @@ class Elem {
 	 * - the ul and ol tags should only contain li tags
 	 */
 
-	public function validPage(): bool
+	public function validPage()
 	{
 		$root = $this;
 		while ($root->getParent() !== null)
@@ -66,12 +66,13 @@ class Elem {
 		if ($root->getTagName() !== "html")
 			return false;
 		$children = $root->children;
-		if (count($children) !== 2 || $children[0]->getTagName() !== "head" || $children[1]->getTagName() !== "body")
+		if (count($children) !== 2 || $children[0]->getTagName() !== "head"
+			|| $children[1]->getTagName() !== "body")
 			return false;
 		return $this->validateNode($root);
 	}
 
-	private function validateNode(Elem $node): bool
+	private function validateNode(Elem $node)
 	{
 		$tag = $node->getTagName();
 		if ($tag === "head")

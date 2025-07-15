@@ -3,29 +3,38 @@
 include "Tea.php";
 include "Coffee.php";
 
-class TemplateEngine{
+class TemplateEngine {
 
-	public function __construct() {
-	}
+    public function __construct() {}
 
-	public function createFile(HotBeverage $text)
-	{
-		$file_name = $text->getName();
-		if (file_exists("template.html") && is_readable("template.html"))
-			$file_content = file("template.html");
-		$template = fopen("$file_name.html", "w");
-		foreach($file_content as $line)
-		{
-			$line = str_replace("{nom}", $text->getName(), $line);
-			$line = str_replace("{prix}", $text->getPrice(), $line);
-			$line = str_replace("{resistance}", $text->getResistence(), $line);
-			$line = str_replace("{description}", $text->getDescription(), $line);
-			$line = str_replace("{commentaire}", $text->getComment(), $line);
-			echo $line;
-			fwrite($template, $line);
-		}
-		fclose($template);
-	}
+    public function createFile(HotBeverage $object) {
+        $reflect = new ReflectionClass($object);
+        $className = $reflect->getShortName(); // Tea, Coffee
+
+        if (!file_exists("template.html") || !is_readable("template.html")) {
+            echo "Template non trouvé !\n";
+            return;
+        }
+
+        $templateLines = file("template.html");
+        $output = fopen("$className.html", "w");
+
+        foreach ($templateLines as $line) {
+            foreach ($reflect->getProperties() as $property) {
+                $name = $property->getName(); // ex: nom, prix, commentaire
+                $getter = "get" . ucfirst($name);
+                $placeholder = "{" . $name . "}";
+
+                if (method_exists($object, $getter)) {
+                    $value = $object->$getter();
+                    $line = str_replace($placeholder, $value, $line);
+                }
+            }
+            fwrite($output, $line);
+        }
+
+        fclose($output);
+    }
 }
 
 ?>

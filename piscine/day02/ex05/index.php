@@ -3,26 +3,24 @@
 require_once "./TemplateEngine.php";
 
 $elem = new Elem('html');
+$head = new Elem('head');
 $body = new Elem('body');
-$body->pushElement(new Elem('p', 'Lorem ipsum'));
-$body->pushElement(new Elem('img'));
-$body->pushElement(new Elem('br'));
-$body->pushElement(new Elem('p', 'pooeoorpeorfpckp\nksdjnsldnkclsdkcnlksdnclskc\n'));
-$div = new Elem('div', 'pooeoorpeorfpckp');
-$div->pushElement(new Elem('p', 'CAVALLO', ['class' => 'text-muted', 'border-color' => 'red']));
-$div->pushElement(new Elem('table', 'opera', ['class' => 'text-muted', 'border-color' => 'red']));
-
-$body->pushElement($div);
-$elem = new Elem('html');
-$body = new Elem('body');
-$body->pushElement(new Elem('p', 'Lorem ipsum', ['class'=> 'text-muted']));
+$elem->pushElement($head);
+$head->pushElement(new Elem('title'));
+$head->pushElement(new Elem('meta'));
 $elem->pushElement($body);
-echo $elem->getHTML();
-$elem->pushElement($body);
-echo $elem->getHTML();
-$engine = new TemplateEngine($elem);
-$engine->createFile("gastro");
-echo "\n\n";
+$ul = new Elem('ul');
+$ol = new Elem('ol');
+$ul->pushElement(new Elem('li', 'ciao'));
+$ul->pushElement(new Elem('li', 'nigu'));
+$ul->pushElement(new Elem('li', 'dsdklj'));
+$ol->pushElement(new Elem('li', 'dsdklj'));
+$ol->pushElement(new Elem('li', 'dsdklj'));
+//errore
+// $ol->pushElement(new Elem('p', 'dsdklj'));
+$body->pushElement($ul);
+$head->pushElement($ul);
+// $body->pushElement($ol);
 $bool = $elem->validPage();
 var_dump($bool);
 
