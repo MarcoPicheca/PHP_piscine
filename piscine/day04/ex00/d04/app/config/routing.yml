@@ -1,0 +1,11 @@
+e01_bundle:
+    resource: "@E01Bundle/Controller/"
+    type:     annotation
+
+e00_bundle:
+    resource: "@E00Bundle/Controller/"
+    type:     annotation
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

@@ -3,7 +3,7 @@
 require_once "Elem.php";
 
 class TemplateEngine{
-	private	Elem $_object;
+	private	$_object;
 	public function __construct(Elem $object) {
 		if (empty($object))
 			die();

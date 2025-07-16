@@ -1,0 +1,10 @@
+{% extends 'E01Bundle::base.html.twig' %}
+
+{% block content %}
+    <h2>Available categories:</h2>
+    <ul>
+        {% for category in categories %}
+            <li><a href="{{ path('e01_category', {'category': category}) }}">{{ category }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

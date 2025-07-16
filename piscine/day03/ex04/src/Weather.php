@@ -10,10 +10,10 @@ class Weather
 
 	public function getTemperature()
 	{
-		$client = new RestClient([
-			'base_url' => "http://api.weatherapi.com/v1/"
-		]);
+		$client = new RestClient(['base_url' => "http://api.weatherapi.com/v1/"]);
 
+		// var_dump($client->options['user_agent']);
+		// print_r($client->options);
 		$response = $client->get("current.json", [
 			'key' => $this->apiKey,
 			'q' => $this->city,
@@ -25,7 +25,6 @@ class Weather
 			return "Errore: " . $response->info->http_code;
 		}
 		$temp = $response['current']->temp_c;
-
 		file_put_contents("weather.txt", "Temperature in {$this->city}: {$temp}°C");
 
 		return "{$temp}°C";
