@@ -1,3 +1,0 @@
-e00_homepage:
-    path:     /
-    defaults: { _controller: E00Bundle:Default:index }

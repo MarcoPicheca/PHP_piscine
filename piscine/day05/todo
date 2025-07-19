@@ -1,0 +1,36 @@
+REGLE SPECIFICHE DAY05
+- [ ] usa sia i file di annotazione che quellii di configurazione
+        per definire la route
+
+- [ ] Crea i Form dentro al controller
+
+- [ ] Ogni pagina deve essere propriamente formattata con DOCTYPE
+        e tag html
+
+- [ ] Il server usato ' quello integrato in symfony e deve essere
+        stoppato e startato con i comandi symfony
+
+- [ ] Solo le richieste di pagine con un URL scitto dovrebbero rendere
+        pagine senza errori. Gli URL non configurati dovrebbero rendere
+        l'errore 404
+
+- [ ] Gli Url dovrebbero funzionare sia con che senza trailing slash
+        es. sia con /ex00 che /ex00/ dovrebbero funzionare
+
+- [ ] Ogni esercizio dovrebbe avere la sua tabella nel database
+
+- [ ] Il nome della tabella del DB dovrebbe essere esplicito e
+        dato correttamente.
+        es. Se vuoi creare una tabella per un modello chiamato Person
+            il nome della tabella del DB deve essere persons (NB. minuscolo)
+
+OBBIETTIVI EX00
+- [ ] Collegare symfony 2.8 a un database
+- [ ] Eseguire un query SQL pura da un controller
+- [ ] Creare una tabella
+- [ ] Mostrare un messaggio di successo o errore
+- [ ] Non usare Doctrine ORM
+
+Che cos'e' un ORM?
+ORM sta per object-relational mapper permette agli
+svluppatori di mappare gli oggetti (chiamate entita') php direttamente a tabelle database, rendendole in gradi di interagire direttamente on il database usando php invece di scrivere complesse query SQL.

@@ -1,0 +1,5 @@
+Array
+(
+    [message] => ma sei bellissimo chat
+    [include_timestamp] => Yes
+)

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+    <table>
+	  <thead>
+	    <tr>
+	      {% for color in colors %}
+	        <th>{{ color.name }}</th>
+	      {% endfor %}
+	    </tr>
+	  </thead>
+	  <tbody>
+	    {% for i in 0..numberOfShades-1 %}
+	      <tr>
+	        {% for color in colors %}
+	          <td style="background-color: {{ color.name }}; opacity: {{ color.shades[i] }}; height: 40px; width: 80px;"></td>
+	        {% endfor %}
+	      </tr>
+	    {% endfor %}
+	  </tbody>
+	</table>
+</body>
+</html>
