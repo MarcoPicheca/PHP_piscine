@@ -1,9 +1,9 @@
-
+<versione obsoleta>
 composer create-progect symfony/framework-standard-edition <nome cartella del progetto> "^2.8"
 	- Questo creera' la cartella del progetto con l'ambiente di 
 		lavoro symfony
 
-php app/console generate:bundle 
+php app/console generate:bundle
 	- crea un bundle a cui devi assegnare il nome
 	- dara' errore perche' devi aggiungerlo agli autoloader
 		nel composer.json per permettere al psr-4
@@ -45,3 +45,4 @@ EX02
 	andava creato un nuovo bundle che creasse un form
 	con symfony.
 	Nel Default controller
+
