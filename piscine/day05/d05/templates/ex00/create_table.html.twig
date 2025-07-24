@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Create Table</title>
+</head>
+<body>
+    <h1>Crea la tabella `users`</h1>
+
+    <form method="get" action="{{ path('ex00_create_table') }}">
+        <button>Crea Tabella</button>
+    </form>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>

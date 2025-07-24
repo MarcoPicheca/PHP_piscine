@@ -46,3 +46,11 @@ EX02
 	con symfony.
 	Nel Default controller
 
+DAY05
+
+composer require symfony/<pacchetto utile> --dev
+	- serve a scaricare i pacchetti necessari per il tuo progetto in
+		symfony
+
+php bin/console make:controller <nome controller>
+	- serve a creare il controller nella cartella logica dell'esercizio
