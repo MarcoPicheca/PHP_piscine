@@ -6,13 +6,8 @@
 </head>
 <body>
     <h1>Crea la tabella `users`</h1>
-
-    <form method="get" action="{{ path('ex00_create_table') }}">
-        <button>Crea Tabella</button>
+     <button type="submit" formaction="{{form}}"> Crea Tabella</button>
     </form>
 
-    {% if message %}
-        <p>{{ message }}</p>
-    {% endif %}
 </body>
 </html>

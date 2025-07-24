@@ -54,3 +54,20 @@ composer require symfony/<pacchetto utile> --dev
 
 php bin/console make:controller <nome controller>
 	- serve a creare il controller nella cartella logica dell'esercizio
+
+mysql -u root -h 127.0.0.1 -p
+	- < mysql > serve per connettersi al client MySQL
+	- < -u root > specifica l'utente da usare
+	- < -h "numero IP"> specifica l'host ovvero l'indirizzo del server
+	- < -p > chiede interattivamente la password per l'utente specificato
+
+\mysqli('127.0.0.1', 'marco1_user', 'marco123', 'ex00_db');
+	E' una metodo per richiamare la classe globale di mysqli()
+
+per connetter qualcosa al controller o a qualsiasi cosa devi creare il
+routing per poter far sapere dove andare a prendere la roba.
+per questo:
+	#[Route('/create/table', name: 'app_create_table')]
+
+il primo definisce il percorso nel localhost, mentre il secondo deve
+servire come ricerca nel progetto per la connessione
