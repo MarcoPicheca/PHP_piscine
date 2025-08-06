@@ -1,0 +1,21 @@
+# Cartelle da ignorare
+/var/
+/vendor/
+
+# File di configurazione sensibili
+.env
+.env.local
+.env.*.local
+
+# Cache e log (Symfony)
+/var/cache/
+/var/log/
+
+# IDE/editor config
+.vscode/
+.idea/
+*.swp
+
+# OS specific files
+.DS_Store
+Thumbs.db
